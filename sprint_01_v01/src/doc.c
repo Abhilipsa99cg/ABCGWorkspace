@@ -143,6 +143,7 @@ DD* loadDD()
 				head = newNode;
 				dd = newNode;
 				tokenizeDD(newNode, tmpBuff);
+		                memset(tmpBuff,'\0', BUFF);
 
 			}
 			else /* rest of the records */
@@ -151,6 +152,7 @@ DD* loadDD()
 				newNode->next = NULL;
 				dd->next = newNode;
 				tokenizeDD(newNode, tmpBuff);
+	                	memset(tmpBuff,'\0', BUFF);
 				dd = dd->next;
 			}
 
@@ -177,20 +179,22 @@ DD* loadDD()
 int tokenizeDD(DD *dd, char *tmpBuff)
 {
 	char *tokens;
+	if(tmpBuff != NULL)
+	{
 	tokens = strtok(tmpBuff, ",");
 	dd->_did = atoi(tokens);
 
 	tokens = strtok(NULL, ",");
-	removeLeading(tokens,dd->_name);
+	removeLeadDoc(tokens,dd->_name);
 
 	tokens = strtok(NULL, ",");
 	dd->_phonenum = atoi(tokens);
 
 	tokens = strtok(NULL, ",");
-	removeLeading(tokens,dd->_designation);
+	removeLeadDoc(tokens,dd->_designation);
 	
-	
-	tokens = strtok(NULL, ",");
+	dd->_designation[strlen(dd->_designation)-1] = '\0';
+	}
 	
     return 0;
 }

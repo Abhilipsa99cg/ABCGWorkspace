@@ -142,6 +142,7 @@ PD* loadPD()
 				head = newNode;
 				pd = newNode;
 				tokenizePD(newNode, tmpBuff);
+		                memset(tmpBuff,'\0', BUFF);
 
 			}
 			else /* rest of the records */
@@ -150,6 +151,7 @@ PD* loadPD()
 				newNode->next = NULL;
 				pd->next = newNode;
 				tokenizePD(newNode, tmpBuff);
+		                memset(tmpBuff,'\0', BUFF);
 				pd = pd->next;
 			}
 
@@ -176,6 +178,8 @@ PD* loadPD()
 int tokenizePD(PD *pd, char *tmpBuff)
 {
 	char *tokens;
+	if(tmpBuff != NULL)
+	{
 	tokens = strtok(tmpBuff, ",");
 	pd->_pid = atoi(tokens);
 
@@ -188,8 +192,8 @@ int tokenizePD(PD *pd, char *tmpBuff)
 	tokens = strtok(NULL, ",");
 	removeLeading(tokens,pd->_illness);
 	
-	
-	tokens = strtok(NULL, ",");
+	pd->_illness[strlen(pd->_illness)-1] = '\0';
+	}
 	
     return 0;
 }

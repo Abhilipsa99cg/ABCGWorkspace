@@ -123,6 +123,7 @@ Appd* loadappd()
 				head = newNode;
 				appd = newNode;
 				tokenizeappd(newNode, tmpBuff);
+		                memset(tmpBuff,'\0', BUFF);
 
 			}
 			else /* rest of the records */
@@ -131,6 +132,7 @@ Appd* loadappd()
 				newNode->next = NULL;
 				appd->next = newNode;
 				tokenizeappd(newNode, tmpBuff);
+		                memset(tmpBuff,'\0', BUFF);
 				appd = appd->next;
 			}
 
@@ -175,6 +177,8 @@ int writeappd(Appd *appd)
 int tokenizeappd(Appd *appd, char *tmpBuff)
 {
 	char *tokens;
+	if(tmpBuff != NULL)
+	{
 	tokens = strtok(tmpBuff, ",");
 	appd->capacity = atoi(tokens);
 
@@ -189,8 +193,9 @@ int tokenizeappd(Appd *appd, char *tmpBuff)
 	
         tokens = strtok(NULL, ",");
 	removeLeading(tokens,appd->_time);
-	tokens = strtok(NULL, ",");
 	
+	appd->_time[strlen(appd->_time)-1] = '\0';
+	}
     return 0;
 
 }
