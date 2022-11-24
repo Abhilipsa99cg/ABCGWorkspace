@@ -13,9 +13,9 @@
 	   int _id=0;
            char _name[BUFF] = {'\0', };
            memset(_name, '\0', BUFF);
-           headdd = loadDD(dd);
-           headpd = loadPD(pd);
-           headappd = loadappd(appd);
+           headdd = loadDD();
+           headpd = loadPD();
+           headappd = loadappd();
            while(1)
            {
              if(signInAdmin(headad) == 0)
@@ -57,11 +57,13 @@
                               break;
 		      case 5:
 			      updateDocDetails(headdd);
+            writeDD(headdd);
                               sleep(1);
                               break;
                               //dispDD(headdd);
                       case 6:
-			      updatePatDetails(headpd);
+			                       updatePatDetails(headpd);
+                             writePD(headpd);
                               sleep(1);
                               break;
                               //dispPD(headpd);

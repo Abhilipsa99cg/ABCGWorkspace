@@ -77,7 +77,7 @@ int signInPatient(PD *head)
 	int flag = 0;
 
 	printf("\n\tEnter patient id: ");
-        scanf("%d", _pd._pid);
+        scanf("%d",&_pd._pid);
 	
 	while(head != NULL)
 	{
@@ -133,7 +133,9 @@ PD* loadPD()
 		memset(tmpBuff,'\0', BUFF);
 		// head = newNode;
 		while(fgets(tmpBuff, BUFF, fp))
-		{
+		{	
+			if((strcmp(tmpBuff, " \n")==0)||(strcmp(tmpBuff, "\n")==0))
+				continue;
 
 			if(head == NULL) /* first record */
 			{
@@ -224,7 +226,7 @@ int writePD(PD *pd)
 		printf("\n\t NULL Write pd");
 	while(pd != NULL)
 	{
-		fprintf(fp,"%d, %s, %d, %s, \n",pd->_pid,pd->_name,pd->_phonenum,pd->_illness);
+		fprintf(fp,"%d, %s, %d, %s\n",pd->_pid,pd->_name,pd->_phonenum,pd->_illness);
 		pd = pd->next;
 	}
 
@@ -341,7 +343,7 @@ int updatePatDetails(PD *head)
                         //head->_name == _pd._name;
                         strcpy(head->_name,_pd._name);
                         //free(head);
-                        writePD(head);
+                        //writePD(head);
                         //dispPD(head);
                         break;
                 }

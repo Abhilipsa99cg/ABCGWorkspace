@@ -115,7 +115,8 @@ Appd* loadappd()
 		memset(tmpBuff,'\0', BUFF);
 		// head = newNode;
 		while(fgets(tmpBuff, BUFF, fp)){
-
+			if((strcmp(tmpBuff, " \n")==0)||(strcmp(tmpBuff, "\n")==0))
+				continue;
 			if(head == NULL) /* first record */
 			{
 				newNode = (Appd *)malloc(sizeof(Appd));
@@ -164,7 +165,7 @@ int writeappd(Appd *appd)
 		printf("\n\t NULL Write appd");
 	while(appd != NULL){
 		
-		fprintf(fp,"%d| %d| %d| %s| %s\n",appd->capacity,appd->_pid,appd->_did,appd->_date,appd->_time);
+		fprintf(fp,"%d, %d, %d, %s, %s\n",appd->capacity,appd->_pid,appd->_did,appd->_date,appd->_time);
 		appd = appd->next;
 	}
 

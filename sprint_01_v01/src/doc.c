@@ -78,7 +78,7 @@ int signInDoctor(DD *head)
 	int flag = 0;
 
 	printf("\n\tEnter doctor id: ");
-        scanf("%d", _dd._did);
+        scanf("%d",&_dd._did);
 	
 	while(head != NULL)
 	{
@@ -135,7 +135,8 @@ DD* loadDD()
 		// head = newNode;
 		while(fgets(tmpBuff, BUFF, fp))
 		{
-
+			if((strcmp(tmpBuff, " \n")==0)||(strcmp(tmpBuff, "\n")==0))
+				continue;
 			if(head == NULL) /* first record */
 			{
 				newNode = (DD *)malloc(sizeof(DD));
@@ -143,7 +144,7 @@ DD* loadDD()
 				head = newNode;
 				dd = newNode;
 				tokenizeDD(newNode, tmpBuff);
-		                memset(tmpBuff,'\0', BUFF);
+		        
 
 			}
 			else /* rest of the records */
@@ -152,10 +153,9 @@ DD* loadDD()
 				newNode->next = NULL;
 				dd->next = newNode;
 				tokenizeDD(newNode, tmpBuff);
-	                	memset(tmpBuff,'\0', BUFF);
-				dd = dd->next;
+	            dd = dd->next;
 			}
-
+			memset(tmpBuff,'\0', BUFF);
 
 		}
 
@@ -225,7 +225,7 @@ int writeDD(DD *dd)
 		printf("\n\t NULL Write dd");
 	while(dd != NULL)
 	{
-		fprintf(fp,"%d, %s, %d, %s, \n",dd->_did,dd->_name,dd->_phonenum,dd->_designation);
+		fprintf(fp,"%d, %s, %d, %s\n",dd->_did,dd->_name,dd->_phonenum,dd->_designation);
 		dd = dd->next;
 	}
 
@@ -342,7 +342,7 @@ int updateDocDetails(DD *head)
 			//head->_name == _dd._name;
 			strcpy(head->_name,_dd._name);
 			//free(head);
-			writeDD(head);
+			//writeDD(head);
 			//dispDD(head);
 			break;
 		}
