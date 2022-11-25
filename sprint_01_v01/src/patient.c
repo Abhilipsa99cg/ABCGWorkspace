@@ -182,19 +182,19 @@ int tokenizePD(PD *pd, char *tmpBuff)
 	char *tokens;
 	if(tmpBuff != NULL)
 	{
-	tokens = strtok(tmpBuff, ",");
-	pd->_pid = atoi(tokens);
+        	tokens = strtok(tmpBuff, ",");
+        	pd->_pid = atoi(tokens);
 
-	tokens = strtok(NULL, ",");
-	removeLeading(tokens,pd->_name);
+        	tokens = strtok(NULL, ",");
+        	removeLeading(tokens,pd->_name);
 
-	tokens = strtok(NULL, ",");
-	pd->_phonenum = atoi(tokens);
+        	tokens = strtok(NULL, ",");
+        	pd->_phonenum = atoi(tokens);
 
-	tokens = strtok(NULL, ",");
-	removeLeading(tokens,pd->_illness);
+        	tokens = strtok(NULL, ",");
+        	removeLeading(tokens,pd->_illness);
 	
-	pd->_illness[strlen(pd->_illness)-1] = '\0';
+        	pd->_illness[strlen(pd->_illness)-1] = '\0';
 	}
 	
     return 0;
@@ -303,11 +303,11 @@ void dispPD(PD *pd)
 	while(pd != NULL)
 	{
 		printf("\n\tID: ");
-		printf("%d",pd->_pid);
+		printf("%d\n",pd->_pid);
 		printf("\tName: ");
-		printf("%s",pd->_name);
+		printf("%s\n",pd->_name);
                 printf("\n\tphone number: ");
-		printf("%d",pd->_phonenum);
+		printf("%d\n",pd->_phonenum);
 		printf("\tIllness: " );
 		printf("%s\n",pd->_illness);
 		pd = pd->next;

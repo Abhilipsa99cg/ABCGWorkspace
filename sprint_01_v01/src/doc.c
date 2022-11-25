@@ -181,19 +181,19 @@ int tokenizeDD(DD *dd, char *tmpBuff)
 	char *tokens;
 	if(tmpBuff != NULL)
 	{
-	tokens = strtok(tmpBuff, ",");
-	dd->_did = atoi(tokens);
+        	tokens = strtok(tmpBuff, ",");
+        	dd->_did = atoi(tokens);
 
-	tokens = strtok(NULL, ",");
-	removeLeadDoc(tokens,dd->_name);
+	        tokens = strtok(NULL, ",");
+	        removeLeadDoc(tokens,dd->_name);
 
-	tokens = strtok(NULL, ",");
-	dd->_phonenum = atoi(tokens);
+	        tokens = strtok(NULL, ",");
+	        dd->_phonenum = atoi(tokens);
 
-	tokens = strtok(NULL, ",");
-	removeLeadDoc(tokens,dd->_designation);
+	        tokens = strtok(NULL, ",");
+	        removeLeadDoc(tokens,dd->_designation);
 	
-	dd->_designation[strlen(dd->_designation)-1] = '\0';
+	        dd->_designation[strlen(dd->_designation)-1] = '\0';
 	}
 	
     return 0;
@@ -302,11 +302,11 @@ void dispDD(DD *dd)
 	while(dd != NULL)
 	{
 		printf("\n\tID: ");
-		printf("%d",dd->_did);
+		printf("%d\n",dd->_did);
 		printf("\tName: ");
-		printf("%s",dd->_name);
+		printf("%s\n",dd->_name);
                 printf("\n\tphone number: ");
-		printf("%d",dd->_phonenum);
+		printf("%d\n",dd->_phonenum);
 		printf("\tDesignation:" );
 		printf("%s\n",dd->_designation);
 		dd = dd->next;

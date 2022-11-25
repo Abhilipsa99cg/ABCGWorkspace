@@ -1,4 +1,25 @@
+/********************************************************************************************************************************
+ * * FILENAME: admin.c
+ * *
+ * * DESCRIPTION: This file contains the functions for admin signin in DAMS and perform various operations.
+ * *
+ * * REVISION HISTORY:
+ * * DATE           NAME                   REFERENCE                 REASON
+ * * -----------------------------------------------------------------------------------------------------------------------------
+ * * 22 Nov 2022    Group 06                 NEW                     NEW CODE TO PERFORM OPERATIONS
+ * *
+ * *******************************************************************************************************************************/
+
 #include <dams.h>
+
+/*********************************************************************************************************************************
+ * * FUNCTION NAME: signInAdmin()
+ * *
+ * * DESCRIPTION: This function is used for Admin signin in DAMS.
+ * *
+ * * RETURNS: SUCCESS and in case of failure ERROR
+ * *
+ * *******************************************************************************************************************************/
 
 int signInAdmin()
 {
@@ -17,6 +38,15 @@ int signInAdmin()
                 return 1;
         return 0;
 }
+
+/*********************************************************************************************************************************
+ * * FUNCTION NAME: bookAppointment()
+ * *
+ * * DESCRIPTION: This function is used for booking the appointment for patient.
+ * *
+ * * RETURNS: SUCCESS and in case of failure ERROR
+ * *
+ * *******************************************************************************************************************************/
 
 
 Appd* bookAppointment(Appd *appd, int *_pid)
@@ -76,14 +106,32 @@ Appd* bookAppointment(Appd *appd, int *_pid)
 
 }
 
+/*********************************************************************************************************************************
+ * * FUNCTION NAME: cap()
+ * *
+ * * DESCRIPTION: This function is used to know the total number of appointments booked in a day.
+ * *
+ * * RETURNS: SUCCESS and in case of failure ERROR
+ * *
+ * *******************************************************************************************************************************/
+
 
 int cap(Appd *appd)
 {
 	printf("\n\tCapacity: ");
-	printf("%d",appd->capacity);		
+	printf("%d\n",appd->capacity);		
 	exit(EXIT_SUCCESS);
         return 0;
 }
+
+/*********************************************************************************************************************************
+ * * FUNCTION NAME: loadappd()
+ * *
+ * * DESCRIPTION: This function is used for loading the appointment file in the memory.
+ * *
+ * * RETURNS: SUCCESS and in case of failure ERROR
+ * *
+ * *******************************************************************************************************************************/
 
 
 Appd* loadappd()
@@ -147,7 +195,14 @@ Appd* loadappd()
 
 }
 
-
+/*********************************************************************************************************************************
+ * * FUNCTION NAME: writeappd()
+ * *
+ * * DESCRIPTION: This function is used for writing onto the appointment file.
+ * * 
+ * * RETURNS: SUCCESS and in case of failure ERROR
+ * *
+ * *******************************************************************************************************************************/
 
 int writeappd(Appd *appd)
 {
@@ -174,47 +229,65 @@ int writeappd(Appd *appd)
 
 }
 
+/*********************************************************************************************************************************
+ * * FUNCTION NAME: tokenizeappd()
+ * *
+ * * DESCRIPTION: This function is used for tokenizing the appointment data.
+ * *
+ * * RETURNS: SUCCESS and in case of failure ERROR
+ * *
+ * *******************************************************************************************************************************/
+
 
 int tokenizeappd(Appd *appd, char *tmpBuff)
 {
 	char *tokens;
 	if(tmpBuff != NULL)
 	{
-	tokens = strtok(tmpBuff, ",");
-	appd->capacity = atoi(tokens);
+	        tokens = strtok(tmpBuff, ",");
+        	appd->capacity = atoi(tokens);
 
-	tokens = strtok(NULL, ",");
-	appd->_pid = atoi(tokens);
+        	tokens = strtok(NULL, ",");
+	        appd->_pid = atoi(tokens);
 
-	tokens = strtok(NULL, ",");
-	appd->_did = atoi(tokens);
+        	tokens = strtok(NULL, ",");
+        	appd->_did = atoi(tokens);
 
-	tokens = strtok(NULL, ",");
-	removeLeading(tokens,appd->_date);
+        	tokens = strtok(NULL, ",");
+        	removeLeading(tokens,appd->_date);
 	
-        tokens = strtok(NULL, ",");
-	removeLeading(tokens,appd->_time);
+                tokens = strtok(NULL, ",");
+        	removeLeading(tokens,appd->_time);
 	
-	appd->_time[strlen(appd->_time)-1] = '\0';
+        	appd->_time[strlen(appd->_time)-1] = '\0';
 	}
     return 0;
 
 }
+
+/*********************************************************************************************************************************
+ * * FUNCTION NAME: viewAppointment()
+ * *
+ * * DESCRIPTION: This function is used for viewing the appointment details.
+ * *
+ * * RETURNS: SUCCESS and in case of failure ERROR
+ * *
+ * *******************************************************************************************************************************/
 
 void viewAppointment(Appd *appd)
 {
        while(appd != NULL)
        {
                 printf("\n\tCapacity: ");
-                printf("%d",appd->capacity);
+                printf("%d\n",appd->capacity);
                 printf("\tDoctor id: ");
                 printf("%d",appd->_did);
                 printf("\n\tPatient id: ");
-                printf("%d",appd->_pid);
+                printf("%d\n",appd->_pid);
                 printf("\tDate of appointment: ");
-                printf("%s",appd->_date);
+                printf("%s\n",appd->_date);
 		printf("\tTime for the appointment: ");
-                printf("%s",appd->_time);
+                printf("%s\n",appd->_time);
                 appd = appd->next;
       }
 

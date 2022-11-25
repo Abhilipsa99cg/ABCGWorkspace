@@ -1,3 +1,15 @@
+/*******************************************************************************************************************
+ * * FILENAME : dams.h
+ * *
+ * * DESCRIPTION : This file contains required libraries, macros, structures and functions are called
+ * *
+ * * REVISION HISTORY :
+ * * DATE                    NAME                    REFERENCE                   REASON
+ * * ---------------------------------------------------------------------------------------------------------------
+ * * 22 Nov 2022            Group 06           NEW                       NEW CODE TO PERFORM OPERATIONS 
+ * *
+ * *****************************************************************************************************************/
+
 #ifndef DAMS_H
 #define DAMS_H
 
@@ -7,6 +19,7 @@
 #include <ctype.h>
 #include <unistd.h>
 #define BUFF 256
+
 
 typedef struct admin
 {

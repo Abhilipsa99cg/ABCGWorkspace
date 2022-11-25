@@ -1,4 +1,25 @@
+/*************************************************************************************************
+ * * FILENAME : main.c
+ * *
+ * * DESCRIPTION : This file contains the main menus.
+ * *
+ * * REVISION HISTORY :
+ * * DATE             NAME              REFERENCE                REASON    
+ * * ---------------------------------------------------------------------------------------------
+ * * 22 Nov 2022     Group 06            NEW                     NEW CODE TO PERFORM OPERATIONS
+ * *
+ * ***********************************************************************************************/
+
 #include <dams.h>
+
+/**************************************************************************************************
+ * * FUNCTION NAME : main()
+ * *
+ * * DESCRIPTION : In this main function, other functions are called.
+ * *
+ * * RETURNS : SUCCESS and in case of failure ERROR
+ * *
+ * ************************************************************************************************/
   
    int main()
    {
@@ -27,9 +48,9 @@
 	     {
 		  printf("\n\tLogged In\n");
 
-		  printf("\n\t**********************Welcome******************\n\t");
+		  printf("\n\t**********************************Welcome***********************************************\n\t");
                   printf("\n\t******************DOCTOR APPOINMENT MANAGEMENT SOFTWARE*********************\n\t");
-                  printf("\n\tPress\n\t1. Create Profile For Doctor\n\t2. Create Profile For Patient\n\t3.Book Appoinment\n\t4.View Appointment\n\t5. Update Profile forDoctor\n\t6. Update Profile for Patient\n\t7. Display Doctor Profile\n\t8. Display Patient Profile\n\t0. Exit\n\tChoice:");
+                  printf("\n\tPress\n\t1. Create Profile For Doctor\n\t2. Create Profile For Patient\n\t3. Book Appoinment\n\t4. View Appointment\n\t5. Update Profile forDoctor\n\t6. Update Profile for Patient\n\t7. Display Doctor Profile\n\t8. Display Patient Profile\n\t0. Exit\n\tChoice:");
                   scanf("%d",&ch);
                   switch(ch)
                   {
@@ -57,13 +78,13 @@
                               break;
 		      case 5:
 			      updateDocDetails(headdd);
-            writeDD(headdd);
+                              writeDD(headdd);
                               sleep(1);
                               break;
                               //dispDD(headdd);
                       case 6:
-			                       updatePatDetails(headpd);
-                             writePD(headpd);
+			      updatePatDetails(headpd);
+                              writePD(headpd);
                               sleep(1);
                               break;
                               //dispPD(headpd);
