@@ -50,7 +50,7 @@
 
 		  printf("\n\t**********************************Welcome***********************************************\n\t");
                   printf("\n\t******************DOCTOR APPOINMENT MANAGEMENT SOFTWARE*********************\n\t");
-                  printf("\n\tPress\n\t1. Create Profile For Doctor\n\t2. Create Profile For Patient\n\t3. Book Appoinment\n\t4. View Appointment\n\t5. Update Profile forDoctor\n\t6. Update Profile for Patient\n\t7. Display Doctor Profile\n\t8. Display Patient Profile\n\t0. Exit\n\tChoice:");
+                  printf("\n\tPress\n\t1. Create Profile For Doctor\n\t2. Create Profile For Patient\n\t3. Book Appointment\n\t4. View Appointment\n\t5. Update Profile for Doctor\n\t6. Update Profile for Patient\n\t7. Display Doctor Profile\n\t8. Display Patient Profile\n\t0. Exit\n\tChoice:");
                   scanf("%d",&ch);
                   switch(ch)
                   {
@@ -67,7 +67,7 @@
                               sleep(2);
                               break;
 		      case 3:
-			      headappd=bookAppointment(headappd, &_id);
+			      headappd=bookAppointment(headappd,&_id);
                               writeappd(headappd);
                               sleep(1);
                               break;
@@ -79,12 +79,14 @@
 		      case 5:
 			      updateDocDetails(headdd);
                               writeDD(headdd);
+			      printf("\n\tSuccessfully Updated\n");
                               sleep(1);
                               break;
                               //dispDD(headdd);
                       case 6:
 			      updatePatDetails(headpd);
                               writePD(headpd);
+			      printf("\n\tSuccessfully Updated\n");
                               sleep(1);
                               break;
                               //dispPD(headpd);

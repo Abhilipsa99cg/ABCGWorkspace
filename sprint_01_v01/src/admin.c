@@ -102,6 +102,7 @@ Appd* bookAppointment(Appd *appd, int *_pid)
 	}
 	*_pid = newNode->capacity;
 
+
 	return head;
 
 }
@@ -120,7 +121,6 @@ int cap(Appd *appd)
 {
 	printf("\n\tCapacity: ");
 	printf("%d\n",appd->capacity);		
-	exit(EXIT_SUCCESS);
         return 0;
 }
 
